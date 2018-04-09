@@ -4,12 +4,15 @@ import * as actions from '../actions';
 
 class Source extends Component {
 
-  // componentDidMount() {
-	// 	const { sources, fetchSources } = this.props;
-	// 	if (sources && sources.length === 0) {
-  // 		fetchSources();
-	// 	}
-	// }
+  componentDidMount() {
+		const { match, stories, fetchStories } = this.props;
+    const { id } = match.params;
+    // console.log(stories)
+    // const shouldLoadStories = stories && stories.length === 0 && stories[0].source.id === id;
+		if (stories && stories.length === 0) {
+    	fetchStories(id);
+		}
+	}
 
   // renderSources() {
   //   const { sources } = this.props;
@@ -22,17 +25,26 @@ class Source extends Component {
   //   ));
   // }
 
+  renderStories() {
+    const { stories } = this.props;
+    return stories.map(story => (
+      <div key={story.title + story.description}>
+        <h2>{story.title}</h2>
+      </div>
+    ));
+  }
+
   render() {
     return (
       <div>
-        {this.props.match.params.id}
+        {this.renderStories()}
       </div>
     );
   }
 }
 
-function mapStateToProps({ sources }) {
-  return { sources };
+function mapStateToProps({ stories }) {
+  return { stories };
 }
 
 export default connect(mapStateToProps, actions)(Source);

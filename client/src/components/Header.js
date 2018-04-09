@@ -19,7 +19,7 @@ class Header extends Component {
   }
 
   render() {
-    console.log(this.props.auth);
+    // console.log(this.props.auth);
     return (
       <div className="header">
         <Link to={this.props.auth ? '/home' : '/'} className="nav-item logo">
