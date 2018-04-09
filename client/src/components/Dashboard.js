@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
+import SourceBox from './SourceBox';
 
 class Dashboard extends Component {
 
@@ -13,12 +14,15 @@ class Dashboard extends Component {
 
   renderSources() {
     const { sources } = this.props;
-    return sources.map(source => (
-      <div className="source-box" key={source.id} onClick={() => console.log(source.name)}>
-        <h2>{source.name}</h2>
-        <p>{source.description}</p>
-      </div>
-    ))
+    return sources.map(source => {
+      return (
+        <SourceBox
+          key={source.id}
+          name={source.name}
+          description={source.description}
+          onClick={() => console.log(source.name)} />
+      );
+    });
   }
 
   render() {
