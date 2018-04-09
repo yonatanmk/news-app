@@ -18,7 +18,6 @@ class Dashboard extends Component {
       <SourceBox
         key={source.id}
         source={source}
-        onClick={() => console.log(source.name)}
       />
     ));
   }
