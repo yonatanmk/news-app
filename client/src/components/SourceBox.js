@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-const SourceBox = ({source}) => (
+const SourceBox = ({ source }) => (
   <div className="source-box-wrapper">
     <Link className="source-box-link" to={`/source/${source.id}`}>
       <div className="source-box">
@@ -10,6 +10,6 @@ const SourceBox = ({source}) => (
       </div>
     </Link>
   </div>
-)
+);
 
 export default SourceBox;

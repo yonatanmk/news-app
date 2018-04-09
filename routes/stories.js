@@ -9,6 +9,6 @@ module.exports = app => {
       `&apiKey=${keys.apiKey}`;
 
     rp(url)
-      .then(body => res.send(body));
+      .then(_body => res.send(_body));
 	});
 };
