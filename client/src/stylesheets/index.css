@@ -63,7 +63,7 @@ html {
 }
 
 .source-box:hover {
-  background-color: #d1d1d1;
+  background-color: #ddd;
 }
 
 .source-box-link {
@@ -86,4 +86,9 @@ html {
 .source-box.source-box-wrapper img {
   display: block;
   margin: auto;
+  border: 1px solid black;
+}
+
+.story-box:hover {
+  background-color: #f1f1f1;
 }
