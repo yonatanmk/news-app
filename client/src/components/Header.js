@@ -9,15 +9,11 @@ class Header extends Component {
         return;
       case false:
         return (
-          <li>
-            <a href="/auth/google">Login With Google</a>
-          </li>
+          <a className="nav-item" href="/auth/google">Login With Google</a>
         );
       default:
         return (
-          <li>
-            <a href="/api/logout">Logout</a>
-          </li>
+          <a className="nav-item" href="/api/logout">Logout</a>
         );
     }
   }
@@ -25,16 +21,14 @@ class Header extends Component {
   render() {
     console.log(this.props.auth);
     return (
-      <nav>
-        <div className="nav-wrapper">
-          <Link to={this.props.auth ? '/home' : '/'} className="left brand-logo">
-            News App
-          </Link>
-          <ul className="right">
-            {this.renderContent()}
-          </ul>
+      <div className="header">
+        <Link to={this.props.auth ? '/home' : '/'} className="nav-item logo">
+          News App
+        </Link>
+        <div className="nav-right">
+          {this.renderContent()}
         </div>
-      </nav>
+      </div>
     );
   }
 }
