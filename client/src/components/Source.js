@@ -7,23 +7,12 @@ class Source extends Component {
   componentDidMount() {
 		const { match, stories, fetchStories } = this.props;
     const { id } = match.params;
-    // console.log(stories)
-    // const shouldLoadStories = stories && stories.length === 0 && stories[0].source.id === id;
-		if (stories && stories.length === 0) {
+    const shouldLoadStories = stories &&
+      (stories.length === 0 || stories[0].source.id !== id);
+		if (shouldLoadStories) {
     	fetchStories(id);
 		}
 	}
-
-  // renderSources() {
-  //   const { sources } = this.props;
-  //   return sources.map(source => (
-  //     <SourceBox
-  //       key={source.id}
-  //       source={source}
-  //       onClick={() => console.log(source.name)}
-  //     />
-  //   ));
-  // }
 
   renderStories() {
     const { stories } = this.props;
