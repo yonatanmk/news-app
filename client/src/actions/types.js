@@ -1,2 +1,7 @@
-export const FETCH_USER = 'FETCH_USER';
-export const FETCH_SOURCES = 'FETCH_SOURCES';
+import { FETCH_USER } from './users';
+import { FETCH_SOURCES } from './sources';
+
+export {
+  FETCH_USER,
+  FETCH_SOURCES,
+};
