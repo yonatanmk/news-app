@@ -14,7 +14,7 @@ class App extends Component {
     const { sources, fetchUser, fetchSources } = this.props;
     fetchUser();
     if (sources && sources.length === 0) {
-  		fetchSources();
+      fetchSources();
 		}
   }
 
@@ -43,8 +43,6 @@ class App extends Component {
     );
   }
 }
-
-
 
 function mapStateToProps({ sources, isFetching }) {
   return { sources, isFetching };
