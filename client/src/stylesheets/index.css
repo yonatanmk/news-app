@@ -50,10 +50,15 @@ html {
   }
 }
 
-.source-box {
-  border: 1px solid black;
+.source-box-wrapper {
   width: 500px;
   margin: 10px auto;
+}
+
+.source-box {
+  border: 1px solid black;
+  /*width: 500px;
+  margin: 10px auto;*/
   padding: 20px;
   border-radius: 4px;
   background-color: #f1f1f1;
@@ -61,6 +66,11 @@ html {
 
 .source-box:hover {
   background-color: #d1d1d1;
+}
+
+.source-box-link {
+  text-decoration: none;
+  color: black;
 }
 
 .source-box h2 {
