@@ -11,10 +11,20 @@ class Dashboard extends Component {
 		}
 	}
 
+  renderSources() {
+    const { sources } = this.props;
+    return sources.map(source => (
+      <div className="source-box" key={source.id} onClick={() => console.log(source.name)}>
+        <h2>{source.name}</h2>
+        <p>{source.description}</p>
+      </div>
+    ))
+  }
+
   render() {
     return (
       <div>
-        The DashBoard
+        {this.renderSources()}
       </div>
     );
   }

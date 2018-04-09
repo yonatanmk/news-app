@@ -1,7 +1,7 @@
 const keys = require('../config/keys');
 const rp = require('request-promise');
 
-const VALID_SOURCES = ['bbc-news', 'abc-news', 'cbs-news', 'the-new-york-times', 'fox-news'];
+const VALID_SOURCES = ['bbc-news', 'abc-news', 'cbs-news', 'the-new-york-times', 'nbc-news'];
 
 module.exports = app => {
   app.get('/api/source-list', (req, res) => {
