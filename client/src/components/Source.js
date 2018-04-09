@@ -15,6 +15,8 @@ class Source extends Component {
 		if (shouldLoadStories) {
     	fetchStories(id);
 		}
+
+    window.scrollTo(0, 0);
 	}
 
   get sourceName() {

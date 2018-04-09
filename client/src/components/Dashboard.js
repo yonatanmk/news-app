@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import SourceBox from './SourceBox';
 
 class Dashboard extends Component {
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   renderSources() {
     const { sources } = this.props;
     return sources.map(source => (

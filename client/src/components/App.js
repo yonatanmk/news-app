@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { RingLoader } from 'react-spinners';
 import * as actions from '../actions';
 
 import Header from './Header';
@@ -18,23 +19,35 @@ class App extends Component {
   }
 
   render() {
+    const { isFetching } = this.props;
     return (
       <div className="container">
         <Router>
           <div>
             <Header />
-            <Route exact path="/" component={Landing} />
-            <Route exact path="/home" component={Dashboard} />
-            <Route exact path="/source/:id" component={Source} />
+            {!isFetching && <Route exact path="/" component={Landing} />}
+            {!isFetching && <Route exact path="/home" component={Dashboard} />}
+            {!isFetching && <Route exact path="/source/:id" component={Source} />}
           </div>
         </Router>
+        {isFetching &&
+          <div className="loading-container">
+            <RingLoader
+              color="#41D6B7"
+              size={200}
+              loading={isFetching}
+            />
+          </div>
+        }
       </div>
     );
   }
 }
 
-function mapStateToProps({ sources }) {
-  return { sources };
+
+
+function mapStateToProps({ sources, isFetching }) {
+  return { sources, isFetching };
 }
 
 export default connect(mapStateToProps, actions)(App);
