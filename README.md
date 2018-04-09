@@ -17,3 +17,5 @@ npm run dev
     3. a mongo URI
     4. a cookie key
     5. a news api key
+
+![MarkdownExplorer](screenshot.png)
