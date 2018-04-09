@@ -4,11 +4,11 @@ import * as actions from '../actions';
 
 class Dashboard extends Component {
 
-  componentDidUpdate() {
-		const { fetchSources } = this.props;
-		// if (user && user.bbgUsername && games.length === 0) {
-		fetchSources();
-		// }
+  componentDidMount() {
+		const { sources, fetchSources } = this.props;
+		if (sources && sources.length === 0) {
+  		fetchSources();
+		}
 	}
 
   render() {
@@ -20,8 +20,8 @@ class Dashboard extends Component {
   }
 }
 
-function mapStateToProps({ auth }) {
-  return { auth };
+function mapStateToProps({ sources }) {
+  return { sources };
 }
 
 export default connect(mapStateToProps, actions)(Dashboard);
