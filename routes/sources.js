@@ -4,7 +4,7 @@ const rp = require('request-promise');
 const VALID_SOURCES = ['bbc-news', 'abc-news', 'cbs-news', 'the-new-york-times', 'fox-news'];
 
 module.exports = app => {
-  app.get('/source-list', (req, res) => {
+  app.get('/api/source-list', (req, res) => {
     const url = 'https://newsapi.org/v2/sources?' +
       `apiKey=${keys.apiKey}`;
 

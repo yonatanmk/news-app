@@ -1,5 +1,3 @@
-// Rendering Layer control (e.g. React Router)
-
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -7,9 +5,7 @@ import * as actions from '../actions';
 
 import Header from './Header';
 import Landing from './Landing';
-// import Dashboard from './Dashboard';
-
-const Dashboard = () => <h2>Dashboard</h2>;
+import Dashboard from './Dashboard';
 
 class App extends Component {
   componentDidMount() {
