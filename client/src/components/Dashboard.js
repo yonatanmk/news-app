@@ -14,15 +14,13 @@ class Dashboard extends Component {
 
   renderSources() {
     const { sources } = this.props;
-    return sources.map(source => {
-      return (
-        <SourceBox
-          key={source.id}
-          name={source.name}
-          description={source.description}
-          onClick={() => console.log(source.name)} />
-      );
-    });
+    return sources.map(source => (
+      <SourceBox
+        key={source.id}
+        source={source}
+        onClick={() => console.log(source.name)}
+      />
+    ));
   }
 
   render() {
