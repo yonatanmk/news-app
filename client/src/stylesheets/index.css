@@ -78,3 +78,12 @@ html {
 .source-box p {
   text-align: justify;
 }
+
+.source-name {
+  text-align: center;
+}
+
+.source-box.source-box-wrapper img {
+  display: block;
+  margin: auto;
+}

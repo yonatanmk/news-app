@@ -10,7 +10,11 @@ import Source from './Source';
 
 class App extends Component {
   componentDidMount() {
-    this.props.fetchUser();
+    const { sources, fetchUser, fetchSources } = this.props;
+    fetchUser();
+    if (sources && sources.length === 0) {
+  		fetchSources();
+		}
   }
 
   render() {
@@ -29,4 +33,8 @@ class App extends Component {
   }
 }
 
-export default connect(null, actions)(App);
+function mapStateToProps({ sources }) {
+  return { sources };
+}
+
+export default connect(mapStateToProps, actions)(App);
