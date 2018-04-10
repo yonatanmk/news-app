@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import md5 from 'md5';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
@@ -29,13 +30,14 @@ class Source extends Component {
   }
 
   renderStories() {
-    const { stories, addUserStory } = this.props;
+    const { user, stories, addUserStory } = this.props;
 
     return stories.map(story => (
       <StoryBox
         key={story.publishedAt}
         story={story}
         onStar={() => addUserStory(story)}
+        isStarred={user.stories.includes(md5(story.publishedAt))}
       />
     ));
   }
@@ -53,8 +55,8 @@ class Source extends Component {
   }
 }
 
-function mapStateToProps({ sources, stories }) {
-  return { sources, stories };
+function mapStateToProps({ sources, stories, user }) {
+  return { sources, stories, user };
 }
 
 export default connect(mapStateToProps, actions)(Source);

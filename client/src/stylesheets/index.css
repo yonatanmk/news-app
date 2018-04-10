@@ -129,3 +129,16 @@ html {
      -moz-box-shadow: inset 0px 0px 8px #281C09;
           box-shadow: inset 0px 0px 8px #281C09;
 }
+
+.gold {
+  background-color: #ffff99;
+}
+
+.gold:hover {
+  background-color: #ffff99;
+}
+
+.silver {
+  background-color: #ccc;
+  color: #f1f1f1;
+}
