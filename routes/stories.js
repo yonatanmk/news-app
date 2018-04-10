@@ -55,4 +55,24 @@ module.exports = app => {
       console.log(err.error);
     })
 	});
+
+  app.post('/api/remove-user-story', (req, res) => {
+    const { body, user } = req;
+    const { publishedAt } = body;
+    const storyId = md5(publishedAt);
+
+    return User.findById({ _id: user._id })
+      .then(dbUser => {
+        const stories = dbUser.stories.filter(story => story !== storyId);
+        dbUser.stories = stories;
+        return dbUser.save();
+      })
+      .then(newUser => {
+        res.send(newUser);
+      })
+      .catch(err => {
+        console.log('ERROR');
+        console.log(err.error);
+      })
+  });
 };

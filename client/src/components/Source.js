@@ -30,13 +30,14 @@ class Source extends Component {
   }
 
   renderStories() {
-    const { user, stories, addUserStory } = this.props;
+    const { user, stories, addUserStory, removeUserStory } = this.props;
 
     return stories.map(story => (
       <StoryBox
         key={story.publishedAt}
         story={story}
         onStar={() => addUserStory(story)}
+        onUnstar={() => removeUserStory(story.publishedAt)}
         isStarred={user.stories.includes(md5(story.publishedAt))}
       />
     ));

@@ -1,4 +1,4 @@
-import { fetchUser, addUserStory } from './users';
+import { fetchUser, addUserStory, removeUserStory } from './users';
 import { fetchSources } from './sources';
 import { fetchStories } from './stories';
 
@@ -7,4 +7,5 @@ export {
   fetchSources,
   fetchStories,
   addUserStory,
+  removeUserStory,
 };

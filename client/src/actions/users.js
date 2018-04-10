@@ -11,5 +11,11 @@ export const fetchUser = () => dispatch => {
 export const addUserStory = story => dispatch => {
   return axios
     .post('/api/add-user-story', { story })
-    .then(res => dispatch({ type: FETCH_USER, payload: res.data }))
+    .then(res => dispatch({ type: FETCH_USER, payload: res.data }));
+};
+
+export const removeUserStory = publishedAt => dispatch => {
+  return axios
+    .post('/api/remove-user-story', { publishedAt })
+    .then(res => dispatch({ type: FETCH_USER, payload: res.data }));
 };
