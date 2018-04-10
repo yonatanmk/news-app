@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { RingLoader } from 'react-spinners';
+import Notifications from 'react-notify-toast';
 import * as actions from '../actions';
 
 import Header from './Header';
@@ -27,6 +28,7 @@ class App extends Component {
     const { isFetching } = this.props;
     return (
       <div className="container">
+        <Notifications />
         <Router>
           <div>
             <Header />

@@ -32,6 +32,10 @@ class Source extends Component {
   renderStories() {
     const { user, stories, addUserStory, removeUserStory } = this.props;
 
+    if (!user) {
+      return null;
+    }
+
     return stories.map(story => (
       <StoryBox
         key={story.title}
