@@ -1,4 +1,8 @@
-import { fetchUser, addUserStory, removeUserStory } from './users';
+import {
+  fetchUser,
+  addUserStory,
+  removeUserStory,
+} from './users';
 import { fetchSources } from './sources';
 import { fetchStories } from './stories';
 

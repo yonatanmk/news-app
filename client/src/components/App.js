@@ -8,12 +8,17 @@ import Header from './Header';
 import Landing from './Landing';
 import Dashboard from './Dashboard';
 import Source from './Source';
+import Profile from './Profile';
+
 
 class App extends Component {
   componentDidMount() {
-    const { sources, fetchUser, fetchSources } = this.props;
-    fetchUser();
-    if (sources && sources.length === 0) {
+    this.props.fetchUser();
+  }
+
+  componentDidUpdate() {
+    const { user, sources, fetchSources } = this.props;
+    if (user && sources && sources.length === 0) {
       fetchSources();
 		}
   }
@@ -28,6 +33,7 @@ class App extends Component {
             {!isFetching && <Route exact path="/" component={Landing} />}
             {!isFetching && <Route exact path="/home" component={Dashboard} />}
             {!isFetching && <Route exact path="/source/:id" component={Source} />}
+            {!isFetching && <Route exact path="/profile" component={Profile} />}
           </div>
         </Router>
         {isFetching &&
@@ -44,8 +50,8 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({ sources, isFetching }) {
-  return { sources, isFetching };
+function mapStateToProps({ user, sources, isFetching }) {
+  return { user, sources, isFetching };
 }
 
 export default connect(mapStateToProps, actions)(App);

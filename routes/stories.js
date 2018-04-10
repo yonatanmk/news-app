@@ -3,6 +3,7 @@ const rp = require('request-promise');
 const md5 = require('md5');
 const keys = require('../config/keys');
 const { createStoryFromApi } = require('../lib/story-utils');
+const { getFrontEndUser } = require('../lib/user-utils');
 
 const User = mongoose.model('users');
 const Story = mongoose.model('stories');
@@ -21,13 +22,13 @@ module.exports = app => {
   app.post('/api/add-user-story', (req, res) => {
     const { body, user } = req;
     const { story } = body;
-    const storyId = md5(story.publishedAt);
+    const storyId = md5(story.title);
     return User.findById({ _id: user._id })
       .then(dbUser => {
         if (!story || dbUser.stories.includes(storyId)) {
           res.send(dbUser);
         }
-        dbUser.stories.push((md5(story.publishedAt)));
+        dbUser.stories.push((md5(story.title)));
         return dbUser;
       })
       .then(dbUser => {
@@ -46,20 +47,20 @@ module.exports = app => {
       })
       .then(dbUser => {
         return dbUser.save()
-          .then(newUser => {
-            res.send(newUser)
-          })
       })
-    .catch(err => {
-      console.log('ERROR');
-      console.log(err.error);
-    })
+      .then(newUser => getFrontEndUser(newUser))
+      .then(user => res.send(user))
+      .catch(err => {
+        console.log('ERROR');
+        console.log(err.error);
+      })
 	});
 
   app.post('/api/remove-user-story', (req, res) => {
     const { body, user } = req;
-    const { publishedAt } = body;
-    const storyId = md5(publishedAt);
+    const { title } = body;
+    console.log('the TItle is: ', title)
+    const storyId = md5(title);
 
     return User.findById({ _id: user._id })
       .then(dbUser => {
@@ -67,9 +68,8 @@ module.exports = app => {
         dbUser.stories = stories;
         return dbUser.save();
       })
-      .then(newUser => {
-        res.send(newUser);
-      })
+      .then(newUser => getFrontEndUser(newUser))
+      .then(user => res.send(user))
       .catch(err => {
         console.log('ERROR');
         console.log(err.error);

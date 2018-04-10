@@ -4,18 +4,17 @@ import { Link } from 'react-router-dom';
 
 class Header extends Component {
   renderContent() {
-    switch (this.props.user) {
-      case null:
-        return;
-      case false:
-        return (
-          <a className="nav-item" href="/auth/google">Login With Google</a>
-        );
-      default:
-        return (
-          <a className="nav-item" href="/api/logout">Logout</a>
-        );
+    const { user } = this.props;
+    if (user === null) {
+      return;
     }
+    return (
+      <div className="nav-right">
+        {user && <Link to="/profile" className="nav-item">Your Stories</Link>}
+        {user && <a className="nav-item" href="/api/logout">Logout</a>}
+        {!user && <a className="nav-item" href="/auth/google">Login With Google</a>}
+      </div>
+    );
   }
 
   render() {

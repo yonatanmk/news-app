@@ -9,6 +9,7 @@ require('./models/story');
 require('./services/passport');
 const keys = require('./config/keys');
 const authRoutes = require('./routes/auth');
+const userRoutes = require('./routes/user');
 const sourceRoutes = require('./routes/sources');
 const storiesRoutes = require('./routes/stories');
 
@@ -28,6 +29,7 @@ app.use(passport.session());
 app.use(bodyParser.json());
 
 authRoutes(app);
+userRoutes(app);
 sourceRoutes(app);
 storiesRoutes(app);
 

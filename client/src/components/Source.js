@@ -34,11 +34,11 @@ class Source extends Component {
 
     return stories.map(story => (
       <StoryBox
-        key={story.publishedAt}
+        key={story.title}
         story={story}
         onStar={() => addUserStory(story)}
-        onUnstar={() => removeUserStory(story.publishedAt)}
-        isStarred={user.stories.includes(md5(story.publishedAt))}
+        onUnstar={() => removeUserStory(story.title)}
+        isStarred={user.storyIds.includes(md5(story.title))}
       />
     ));
   }
@@ -46,7 +46,7 @@ class Source extends Component {
   render() {
     return (
       <div>
-        {this.sourceName && <h1 className="source-name">{`Top Stories From ${this.sourceName}`}</h1>}
+        {this.sourceName && <h1 className="page-title">{`Top Stories From ${this.sourceName}`}</h1>}
         {this.renderStories()}
         <div className="column-box">
           <a href="/home">Back</a>
