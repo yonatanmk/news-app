@@ -7,6 +7,7 @@ const SourceBox = ({ story }) => (
     {story.urlToImage && <img src={story.urlToImage} alt="Unavailable" width="500" />}
     <p>{getStoryDate(story)}</p>
     <p>{story.description} <a href={story.url}>Read More</a></p>
+    <a></a>
   </div>
 );
 
