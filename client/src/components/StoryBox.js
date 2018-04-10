@@ -1,5 +1,6 @@
 import React from 'react';
 import { getStoryDate } from '../lib/story-utils';
+import Star from 'react-icons/lib/fa/star';
 
 const SourceBox = ({ story }) => (
   <div className="source-box source-box-wrapper story-box">
@@ -7,7 +8,9 @@ const SourceBox = ({ story }) => (
     {story.urlToImage && <img src={story.urlToImage} alt="Unavailable" width="500" />}
     <p>{getStoryDate(story)}</p>
     <p>{story.description} <a href={story.url}>Read More</a></p>
-    <a></a>
+    <div className="star-button-wrapper">
+      <a className="star-button" onClick={() => console.log(story.title)}><Star /></a>
+    </div>
   </div>
 );
 
