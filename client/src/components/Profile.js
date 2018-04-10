@@ -20,17 +20,16 @@ class Profile extends Component {
         key={story.title}
         story={story}
         onStar={() => {}}
-        onUnstar={() => removeUserStory(story.title)}
+        onUnstar={() => this.onRemoveStory(story.title)}
         isStarred
       />
     ));
   }
 
-  onRemoveStory(story) {
-    // const shouldRemove = confirm("You may lose this story forever. Are you sure you want to continue?")
-    // if (shouldRemove) {
-      this.props.removeUserStory(story.title);
-    // }
+  onRemoveStory(title) {
+    if (window.confirm("You may lose this story forever. Are you sure you want to continue?")) {
+      this.props.removeUserStory(title);
+    }
   }
 
   render() {
