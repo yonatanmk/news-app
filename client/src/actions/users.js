@@ -13,6 +13,6 @@ export const addUserStory = story => dispatch => {
   dispatch(isFetching.start());
   return axios
     .post('/api/add-user-story', { story })
-    // .then(res => dispatch({ type: FETCH_USER, payload: res.data }));
+    .then(res => dispatch({ type: FETCH_USER, payload: res.data }))
     .finally(() => dispatch(isFetching.stop()));
 };

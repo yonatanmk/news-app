@@ -33,7 +33,7 @@ class Source extends Component {
 
     return stories.map(story => (
       <StoryBox
-        key={story.title + story.description}
+        key={story.publishedAt}
         story={story}
         onStar={() => addUserStory(story)}
       />

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 class Header extends Component {
   renderContent() {
-    switch (this.props.auth) {
+    switch (this.props.user) {
       case null:
         return;
       case false:
@@ -19,10 +19,9 @@ class Header extends Component {
   }
 
   render() {
-    // console.log(this.props.auth);
     return (
       <div className="header">
-        <Link to={this.props.auth ? '/home' : '/'} className="nav-item logo">
+        <Link to={this.props.user ? '/home' : '/'} className="nav-item logo">
           News App
         </Link>
         <div className="nav-right">
@@ -33,8 +32,8 @@ class Header extends Component {
   }
 }
 
-function mapStateToProps({ auth }) {
-  return { auth };
+function mapStateToProps({ user }) {
+  return { user };
 }
 
 export default connect(mapStateToProps)(Header);

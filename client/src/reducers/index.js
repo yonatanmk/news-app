@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
-import authReducer from './authReducer';
+import userReducer from './userReducer';
 import sourceReducer from './sourceReducer';
 import storiesReducer from './storiesReducer';
 import isFetchingReducer from './isFetchingReducer';
 
 export default combineReducers({
   isFetching: isFetchingReducer,
-  auth: authReducer,
+  user: userReducer,
   sources: sourceReducer,
   stories: storiesReducer,
 });
