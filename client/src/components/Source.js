@@ -32,7 +32,7 @@ class Source extends Component {
     const { stories } = this.props;
 
     return stories.map(story => (
-      <StoryBox key={story.title + story.description} story={story}/>
+      <StoryBox key={story.title + story.description} story={story} />
     ));
   }
 

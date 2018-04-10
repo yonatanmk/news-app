@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { getStoryDate } from '../lib/story-utils';
 
 const SourceBox = ({ story }) => (
