@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-import { getStoryDate } from '../lib/story-utils';
+import StoryBox from './StoryBox';
 
 class Source extends Component {
   componentDidMount() {
@@ -32,12 +32,7 @@ class Source extends Component {
     const { stories } = this.props;
 
     return stories.map(story => (
-      <div className="source-box source-box-wrapper story-box" key={story.title + story.description}>
-        <h2>{story.title}</h2>
-        {story.urlToImage && <img src={story.urlToImage} alt="Unavailable" width="400" />}
-        <p>{getStoryDate(story)}</p>
-        <p>{story.description} <a href={story.url}>Read More</a></p>
-      </div>
+      <StoryBox key={story.title + story.description} story={story}/>
     ));
   }
 
@@ -46,6 +41,9 @@ class Source extends Component {
       <div>
         {this.sourceName && <h1 className="source-name">{`Top Stories From ${this.sourceName}`}</h1>}
         {this.renderStories()}
+        <div className="column-box">
+          <a href="/home">Back</a>
+        </div>
       </div>
     );
   }

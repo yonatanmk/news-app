@@ -39,7 +39,7 @@ html {
   float: right;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   .header .nav-item {
     float: none;
     display: block;
@@ -58,7 +58,7 @@ html {
 }
 
 .source-box-wrapper {
-  width: 500px;
+  width: 600px;
   margin: 10px auto;
 }
 
@@ -98,4 +98,9 @@ html {
 
 .story-box:hover {
   background-color: #f1f1f1;
+}
+
+.column-box {
+  width: 640px;
+  margin: auto;
 }
