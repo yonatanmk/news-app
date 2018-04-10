@@ -1,6 +1,6 @@
 import React from 'react';
-import { getStoryDate } from '../lib/story-utils';
 import Star from 'react-icons/lib/fa/star';
+import { getStoryDate } from '../lib/story-utils';
 
 const SourceBox = ({ story, isStarred, onStar, onUnstar }) => (
   <div className={`source-box source-box-wrapper story-box ${isStarred ? 'gold' : ''}`}>

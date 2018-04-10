@@ -4,15 +4,21 @@ import * as actions from '../actions';
 import StoryBox from './StoryBox';
 
 class Profile extends Component {
-  renderStories() {
-    const { user, removeUserStory } = this.props;
+  onRemoveStory(title) {
+    if (window.confirm('You may lose this story forever. Are you sure you want to continue?')) {
+      this.props.removeUserStory(title);
+    }
+  }
 
+  renderStories() {
+    const { user } = this.props;
     if (!user) {
       return null;
     }
-
     if (user.stories.length === 0) {
-      return (<h4 style={{ textAlign: 'center' }}>You currently have no news stories saved</h4>)
+      return (
+        <h4 style={{ textAlign: 'center' }}>You currently have no news stories saved</h4>
+      );
     }
 
     return user.stories.map(story => (
@@ -24,12 +30,6 @@ class Profile extends Component {
         isStarred
       />
     ));
-  }
-
-  onRemoveStory(title) {
-    if (window.confirm("You may lose this story forever. Are you sure you want to continue?")) {
-      this.props.removeUserStory(title);
-    }
   }
 
   render() {

@@ -40,26 +40,23 @@ module.exports = app => {
             const newStory = createStoryFromApi(story);
             return (new Story(newStory)).save()
               .then(() => {
-                console.log(`Saved \"${newStory.title}\"`);
+                console.log(`Saved "${newStory.title}"`);
                 return dbUser;
               });
-          })
+          });
       })
-      .then(dbUser => {
-        return dbUser.save()
-      })
+      .then(dbUser => dbUser.save())
       .then(newUser => getFrontEndUser(newUser))
-      .then(user => res.send(user))
+      .then(_user => res.send(_user))
       .catch(err => {
         console.log('ERROR');
         console.log(err.error);
-      })
+      });
 	});
 
   app.post('/api/remove-user-story', (req, res) => {
     const { body, user } = req;
     const { title } = body;
-    console.log('the TItle is: ', title)
     const storyId = md5(title);
 
     return User.findById({ _id: user._id })
@@ -69,10 +66,10 @@ module.exports = app => {
         return dbUser.save();
       })
       .then(newUser => getFrontEndUser(newUser))
-      .then(user => res.send(user))
+      .then(_user => res.send(_user))
       .catch(err => {
         console.log('ERROR');
         console.log(err.error);
-      })
+      });
   });
 };

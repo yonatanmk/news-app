@@ -1,7 +1,4 @@
-const mongoose = require('mongoose');
 const { getFrontEndUser } = require('../lib/user-utils');
-
-const Story = mongoose.model('stories');
 
 module.exports = app => {
   app.get('/api/current-user', (req, res) => {
@@ -12,6 +9,6 @@ module.exports = app => {
     getFrontEndUser(user)
       .then(newUser => {
         res.send(newUser);
-      })
+      });
   });
 };
