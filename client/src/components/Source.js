@@ -29,10 +29,14 @@ class Source extends Component {
   }
 
   renderStories() {
-    const { stories } = this.props;
+    const { stories, addUserStory } = this.props;
 
     return stories.map(story => (
-      <StoryBox key={story.title + story.description} story={story} />
+      <StoryBox
+        key={story.title + story.description}
+        story={story}
+        onStar={() => addUserStory(story)}
+      />
     ));
   }
 
