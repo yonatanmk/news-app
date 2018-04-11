@@ -16,7 +16,11 @@ module.exports = app => {
       `&apiKey=${keys.apiKey}`;
 
     rp(url)
-      .then(_body => res.send(_body));
+      .then(_body => res.send(_body))
+      .catch(() => {
+        console.log('Error Getting News Stories: /api/stories')
+        res.status(500).send();
+      });
 	});
 
   app.post('/api/add-user-story', (req, res) => {
@@ -48,9 +52,10 @@ module.exports = app => {
       .then(dbUser => dbUser.save())
       .then(newUser => getFrontEndUser(newUser))
       .then(_user => res.send(_user))
-      .catch(err => {
-        console.log('ERROR');
-        console.log(err.error);
+      .catch(() => {
+        console.log('Error Saving News Story: /api/add-user-story')
+        console.log(story.title)
+        res.status(500).send();
       });
 	});
 
@@ -67,9 +72,10 @@ module.exports = app => {
       })
       .then(newUser => getFrontEndUser(newUser))
       .then(_user => res.send(_user))
-      .catch(err => {
-        console.log('ERROR');
-        console.log(err.error);
+      .catch(() => {
+        console.log('Error Removing News Story: /api/remove-user-story')
+        console.log(title)
+        res.status(500).send();
       });
   });
 };

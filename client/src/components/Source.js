@@ -10,8 +10,8 @@ class Source extends Component {
   componentDidMount() {
 		const { match, stories, fetchStories } = this.props;
     const { id } = match.params;
-    const shouldLoadStories = (stories && stories.length === 0) ||
-      _.get(stories, '[0].source.id') !== id;
+    const shouldLoadStories = stories &&
+      (stories.length === 0 || _.get(stories, '[0].source.id') !== id);
 
 		if (shouldLoadStories) {
       fetchStories(id);
@@ -51,7 +51,7 @@ class Source extends Component {
     return (
       <div>
         {this.sourceName && <h1 className="page-title">{`Top Stories From ${this.sourceName}`}</h1>}
-        {this.renderStories()}
+        { this.props.stories && this.renderStories()}
         <div className="column-box">
           <Link to="/home">Back</Link>
         </div>
