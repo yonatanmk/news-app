@@ -22,7 +22,7 @@ class Profile extends Component {
       );
     }
 
-    return user.stories.map(story => (
+    return user.stories.reverse().map(story => (
       <StoryBox
         key={story.title}
         story={story}
