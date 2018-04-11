@@ -11,12 +11,17 @@ Run `npm run dev` from the root directory
 2. Run `npm install` in the client directory
 3. Add dev.js file to /config
     - This should have been included in an email
-    - This file should contain:
-        1. A google client ID
-        2. A google client secret
-        3. A mongo URI
-        4. A cookie key
-        5. A news api key
+    - This file should look like:
+    
+```javascript
+module.exports = {
+  googleClientID: {KEY HERE},
+  googleClientSecret: {KEY HERE},
+  mongoURI: {KEY HERE},
+  cookieKey: {KEY HERE},
+  apiKey: {KEY HERE},
+};
+```
 
 ![MarkdownExplorer](screenshot1.png)
 
