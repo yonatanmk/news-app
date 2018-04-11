@@ -1,9 +1,9 @@
 # News App
 
-db hosted on at mlab.com
+Database hosted at mlab.com
 
 ## Running app
-npm run dev
+Run `npm run dev` from the root directory
 
 ## Setup
 
@@ -18,4 +18,6 @@ npm run dev
         4. A cookie key
         5. A news api key
 
-![MarkdownExplorer](screenshot.png)
+![MarkdownExplorer](screenshot1.png)
+
+![MarkdownExplorer](screenshot2.png)
