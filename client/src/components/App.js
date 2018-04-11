@@ -11,7 +11,6 @@ import Dashboard from './Dashboard';
 import Source from './Source';
 import Profile from './Profile';
 
-
 class App extends Component {
   componentDidMount() {
     this.props.fetchUser();

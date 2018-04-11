@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { notify } from 'react-notify-toast';
 import isFetching from './isFetching';
+import { SET_SOURCES } from './sources';
 
 export const SET_USER = 'SET_USER';
 
@@ -24,4 +25,16 @@ export const removeUserStory = title => dispatch => {
     .post('/api/remove-user-story', { title })
     .then(res => dispatch({ type: SET_USER, payload: res.data }))
     .then(() => notify.show('Story Removed From Your Profile', 'error', 2000));
+};
+
+export const setUserSources = sources => dispatch => {
+  console.log('setUserSources')
+  console.log(sources)
+  dispatch(isFetching.start());
+  return axios
+    .post('/api/set-user-sources', {sources})
+    .then(res => dispatch({ type: SET_USER, payload: res.data }))
+    .then(() => axios.get('/api/source-list'))
+    .then(res => dispatch({ type: SET_SOURCES, payload: res.data }))
+    .finally(() => dispatch(isFetching.stop()));
 };

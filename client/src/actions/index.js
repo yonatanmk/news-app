@@ -2,6 +2,7 @@ import {
   fetchUser,
   addUserStory,
   removeUserStory,
+  setUserSources,
 } from './users';
 import { fetchSources } from './sources';
 import { fetchStories } from './stories';
@@ -12,4 +13,5 @@ export {
   fetchStories,
   addUserStory,
   removeUserStory,
+  setUserSources,
 };
