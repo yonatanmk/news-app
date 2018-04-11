@@ -1,6 +1,7 @@
 # News App
 
 A production build of the app can be found at https://ymk-news-app.herokuapp.com
+
 Database hosted at mlab.com
 
 ## Running app
