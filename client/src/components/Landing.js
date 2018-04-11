@@ -5,9 +5,7 @@ import { Redirect } from 'react-router-dom';
 class Landing extends Component {
   render() {
     if (this.props.user) {
-      return (
-        <Redirect to='/home'/>
-      )
+      return (<Redirect to='/home'/>);
     }
     return (
       <div className="page-title">

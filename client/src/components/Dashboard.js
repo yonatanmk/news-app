@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import SourceBox from './SourceBox';
 import SourcePicker from './SourcePicker';
 
@@ -24,6 +25,9 @@ class Dashboard extends Component {
   }
 
   render() {
+    if (this.props.user === false) {
+      return (<Redirect to='/'/>);
+    }
     return (
       <div>
         {!this.displayPicker && this.renderSources()}

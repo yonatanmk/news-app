@@ -2,7 +2,7 @@ import _ from 'lodash';
 import md5 from 'md5';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import * as actions from '../actions';
 import StoryBox from './StoryBox';
 
@@ -33,10 +33,6 @@ class Source extends Component {
   renderStories() {
     const { user, stories, addUserStory, removeUserStory } = this.props;
 
-    if (!user) {
-      return null;
-    }
-
     return stories.map(story => (
       <StoryBox
         key={story.title}
@@ -49,6 +45,9 @@ class Source extends Component {
   }
 
   render() {
+    if (this.props.user === false) {
+      return (<Redirect to='/'/>);
+    }
     return (
       <div>
         {this.sourceName && <h1 className="page-title">{`Top Stories From ${this.sourceName}`}</h1>}

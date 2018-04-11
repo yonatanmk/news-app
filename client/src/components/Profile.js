@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import * as actions from '../actions';
 import StoryBox from './StoryBox';
 
@@ -34,6 +34,9 @@ class Profile extends Component {
   }
 
   render() {
+    if (this.props.user === false) {
+      return (<Redirect to='/'/>);
+    }
     return (
       <div>
         <h1 className="page-title">Your Stories</h1>
