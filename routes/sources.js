@@ -18,13 +18,17 @@ module.exports = app => {
         const sources = JSON.parse(body)
           .sources.filter(source => {
             if (userSources.length === 5) {
-              return userSources.includes(source.id)
+              return userSources && userSources.includes(source.id);
             } else {
               return true;
             }
           });
         res.send(sources);
-      });
+      })
+      .catch(() => {
+        console.log('Error Getting News Sources: /api/source-list')
+        res.status(500).send();
+      })
 	});
 
   app.post('/api/set-user-sources', (req, res) => {
@@ -41,9 +45,9 @@ module.exports = app => {
       .then(dbUser => dbUser.save())
       .then(newUser => getFrontEndUser(newUser))
       .then(_user => res.send(_user))
-      .catch(err => {
-        console.log('ERROR');
-        console.log(err.error);
+      .catch(() => {
+        console.log('Error Saving News Sources: /api/set-user-sources')
+        res.status(500).send();
       });
   });
 };
