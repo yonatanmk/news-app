@@ -63,6 +63,10 @@ class SourcePicker extends Component {
     ));
   }
 
+  get submitDisabled() {
+    return this.state.sources.length !== 5;
+  }
+
   render() {
     return (
       <div className="source-list">
@@ -72,7 +76,12 @@ class SourcePicker extends Component {
             {this.renderSources()}
           </div>
           <div className="flex">
-            <input className="submit-button" name="submit" type="submit" />
+            <input
+              className={`submit ${this.submitDisabled ? 'submit-disabled' : 'submit-active'}`}
+              name="submit"
+              type="submit"
+              value={this.submitDisabled ? 'Please select 5 news sources' : "Submit"}
+              disabled={this.submitDisabled} />
           </div>
         </form>
       </div>

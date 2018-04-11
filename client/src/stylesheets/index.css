@@ -185,22 +185,8 @@ flex-grid:after {
   display: flex;
 }
 
-.submit-button {
-  background-color: #0f9d58;
-  border: 1px solid black;
-  border-radius: 4px;
-  font-size: 24px;
-  width: 50%;
-  margin: auto;
-  padding: 10px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-.submit-button {
-  background-color: #0f9d58;
-  border: 1px solid black;
+.submit {
+  color: black;
   border-radius: 4px;
   font-size: 24px;
   width: 50%;
@@ -212,12 +198,22 @@ flex-grid:after {
   outline:none;
 }
 
-.submit-button:hover{
+.submit-active {
+  background-color: #0f9d58;
+  border: 1px solid black;
+}
+
+.submit-disabled {
+  background-color: #b9f8da;
+  content: Please 
+}
+
+.submit-active:hover{
   background-color: #0c8349;
   cursor: pointer;
 }
 
-.submit-button:active {
+.submit:active {
   -webkit-box-shadow: inset 0px 0px 8px #281C09;
      -moz-box-shadow: inset 0px 0px 8px #281C09;
           box-shadow: inset 0px 0px 8px #281C09;
