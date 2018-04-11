@@ -46,6 +46,9 @@ class App extends Component {
             />
           </div>
         }
+        <div className="footer">
+          <a href="https://newsapi.org">Powered by News API</a>
+        </div>
       </div>
     );
   }

@@ -2,11 +2,16 @@ html {
   font-family: GillSans, Calibri, Trebuchet, sans-serif;
 }
 
+body {
+  margin: 0px;
+}
+
 .header {
   overflow: hidden;
   background-color: #f1f1f1;
   padding: 10px;
   border-radius: 4px;
+  margin: 8px;
 }
 
 .header .nav-item {
@@ -205,7 +210,6 @@ flex-grid:after {
 
 .submit-disabled {
   background-color: #b9f8da;
-  content: Please 
 }
 
 .submit-active:hover{
@@ -217,4 +221,13 @@ flex-grid:after {
   -webkit-box-shadow: inset 0px 0px 8px #281C09;
      -moz-box-shadow: inset 0px 0px 8px #281C09;
           box-shadow: inset 0px 0px 8px #281C09;
+}
+
+.footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #a1a1a1;
+  color: white;
+  text-align: center;
 }
