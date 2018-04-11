@@ -5,10 +5,15 @@ module.exports = app => {
     const { user } = req;
     if (!user) {
       res.send();
-    }
-    getFrontEndUser(user)
+    } else {
+      getFrontEndUser(user)
       .then(newUser => {
         res.send(newUser);
+      })
+      .catch(() => {
+        console.log('Error Getting Front End User: /api/current-user')
+        res.status(500).send();
       });
+    }
   });
 };

@@ -5,7 +5,7 @@ const defaultSources = [];
 export default function (state = defaultSources, action) {
   switch (action.type) {
     case SET_SOURCES:
-      return action.payload || state;
+      return action.payload || false;
     default:
       return state;
   }

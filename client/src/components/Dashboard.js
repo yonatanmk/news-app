@@ -30,7 +30,7 @@ class Dashboard extends Component {
     }
     return (
       <div>
-        {!this.displayPicker && this.renderSources()}
+        {!this.displayPicker && this.props.sources && this.renderSources()}
         {this.displayPicker && <SourcePicker />}
       </div>
     );
