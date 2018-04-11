@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import SourceBox from './SourceBox';
+import SourcePicker from './SourcePicker';
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -17,17 +18,23 @@ class Dashboard extends Component {
     ));
   }
 
+  get displayPicker() {
+    const { user } = this.props;
+    return !user || !user.sources || user.sources.length !== 5
+  }
+
   render() {
     return (
       <div>
-        {this.renderSources()}
+        {!this.displayPicker && this.renderSources()}
+        {this.displayPicker && <SourcePicker />}
       </div>
     );
   }
 }
 
-function mapStateToProps({ sources }) {
-  return { sources };
+function mapStateToProps({ sources, user }) {
+  return { sources, user };
 }
 
 export default connect(mapStateToProps)(Dashboard);
