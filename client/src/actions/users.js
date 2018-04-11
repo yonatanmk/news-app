@@ -6,11 +6,11 @@ import { SET_SOURCES } from './sources';
 export const SET_USER = 'SET_USER';
 
 export const fetchUser = () => dispatch => {
-  dispatch(isFetching.start());
+  isFetching.start(dispatch);
   return axios
     .get('/api/current-user')
     .then(res => dispatch({ type: SET_USER, payload: res.data }))
-    .finally(() => dispatch(isFetching.stop()));
+    .finally(() => isFetching.stop(dispatch));
 };
 
 export const addUserStory = story => dispatch => {
@@ -28,11 +28,11 @@ export const removeUserStory = title => dispatch => {
 };
 
 export const setUserSources = sources => dispatch => {
-  dispatch(isFetching.start());
+  isFetching.start(dispatch);
   return axios
     .post('/api/set-user-sources', {sources})
     .then(res => dispatch({ type: SET_USER, payload: res.data }))
     .then(() => axios.get('/api/source-list'))
     .then(res => dispatch({ type: SET_SOURCES, payload: res.data }))
-    .finally(() => dispatch(isFetching.stop()));
+    .finally(() => isFetching.stop(dispatch));
 };
