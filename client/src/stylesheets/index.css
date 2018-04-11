@@ -71,6 +71,7 @@ html {
 
 .source-box:hover {
   background-color: #ddd;
+  cursor: pointer;
 }
 
 .source-box-link {
@@ -141,4 +142,83 @@ html {
 .silver {
   background-color: #ccc;
   color: #f1f1f1;
+}
+
+.flex-grid {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+flex-grid:after {
+  content: "";
+  flex: auto;
+}
+
+.col {
+  width: 30%;
+}
+
+.source-list {
+  width: 800px;
+  margin: 10px auto;
+}
+
+.source-list-item {
+  background-color: #f1f1f1;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+.source-list-item:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+.source-label {
+  margin-left: 10px;
+}
+
+.flex {
+  display: flex;
+}
+
+.submit-button {
+  background-color: #0f9d58;
+  border: 1px solid black;
+  border-radius: 4px;
+  font-size: 24px;
+  width: 50%;
+  margin: auto;
+  padding: 10px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.submit-button {
+  background-color: #0f9d58;
+  border: 1px solid black;
+  border-radius: 4px;
+  font-size: 24px;
+  width: 50%;
+  margin: auto;
+  padding: 10px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline:none;
+}
+
+.submit-button:hover{
+  background-color: #0c8349;
+  cursor: pointer;
+}
+
+.submit-button:active {
+  -webkit-box-shadow: inset 0px 0px 8px #281C09;
+     -moz-box-shadow: inset 0px 0px 8px #281C09;
+          box-shadow: inset 0px 0px 8px #281C09;
 }

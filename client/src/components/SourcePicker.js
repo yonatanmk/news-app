@@ -25,6 +25,15 @@ class SourcePicker extends Component {
     }
   }
 
+  onSourceClick(source) {
+    const event = {
+      target: {
+        name: source.id,
+      }
+    }
+    this.handleCheckboxChange(event)
+  }
+
   isChecked(source) {
     return this.state.sources.includes(source.id);
   }
@@ -42,25 +51,29 @@ class SourcePicker extends Component {
   renderSources() {
     const { sources } = this.props;
     return sources.map(source => (
-      <div key={source.id}>
+      <div key={source.id} className="source-list-item col" onClick={() => this.onSourceClick(source)}>
         <input
           name={source.id}
           type="checkbox"
           checked={this.isChecked(source)}
           onChange={e => this.handleCheckboxChange(e)}
         />
-        <label>{source.name}</label>
+        <label className="source-label">{source.name}</label>
       </div>
     ));
   }
 
   render() {
     return (
-      <div>
-        <h1>Please Choose 5 News Sources</h1>
+      <div className="source-list">
+        <h1 className="page-title">Please Choose 5 News Sources</h1>
         <form onSubmit={e => this.onSubmit(e)}>
-          {this.renderSources()}
-          <input name="submit" type="submit" />
+          <div className="flex-grid">
+            {this.renderSources()}
+          </div>
+          <div className="flex">
+            <input className="submit-button" name="submit" type="submit" />
+          </div>
         </form>
       </div>
     );

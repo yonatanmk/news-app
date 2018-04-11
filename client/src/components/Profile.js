@@ -17,7 +17,7 @@ class Profile extends Component {
     }
     if (user.stories.length === 0) {
       return (
-        <h4 style={{ textAlign: 'center' }}>You currently have no news stories saved</h4>
+        <h4 className="page-title">You currently have no news stories saved</h4>
       );
     }
 
