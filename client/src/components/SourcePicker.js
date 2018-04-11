@@ -11,41 +11,45 @@ class SourcePicker extends Component {
     };
   }
 
+  onSourceClick(source) {
+    const event = {
+      target: {
+        name: source.id,
+      },
+    };
+    this.handleCheckboxChange(event);
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
+    const { sources } = this.state;
+    if (sources.length === 5) {
+      this.props.setUserSources(sources);
+    } else {
+      alert('You must pick 5 news sources. No more, no less.');
+    }
+  }
+
+  get submitDisabled() {
+    return this.state.sources.length !== 5;
+  }
+
   handleCheckboxChange(event) {
     const { sources } = this.state;
     const sourceId = event.target.name;
     if (sources.includes(sourceId)) {
       this.setState({
-        sources: sources.filter(source => source !== sourceId)
-      })
+        sources: sources.filter(source => source !== sourceId),
+      });
     } else {
       this.setState({
-        sources: [...sources, sourceId]
-      })
+        sources: [...sources, sourceId],
+      });
     }
-  }
-
-  onSourceClick(source) {
-    const event = {
-      target: {
-        name: source.id,
-      }
-    }
-    this.handleCheckboxChange(event)
   }
 
   isChecked(source) {
     return this.state.sources.includes(source.id);
-  }
-
-  onSubmit(e) {
-    e.preventDefault()
-    const { sources } = this.state;
-    if (sources.length === 5) {
-      this.props.setUserSources(sources);
-    } else {
-      alert("You must pick 5 news sources. No more, no less.")
-    }
   }
 
   renderSources() {
@@ -63,10 +67,6 @@ class SourcePicker extends Component {
     ));
   }
 
-  get submitDisabled() {
-    return this.state.sources.length !== 5;
-  }
-
   render() {
     return (
       <div className="source-list">
@@ -80,8 +80,9 @@ class SourcePicker extends Component {
               className={`submit ${this.submitDisabled ? 'submit-disabled' : 'submit-active'}`}
               name="submit"
               type="submit"
-              value={this.submitDisabled ? 'Please select 5 news sources' : "Submit"}
-              disabled={this.submitDisabled} />
+              value={this.submitDisabled ? 'Please select 5 news sources' : 'Submit'}
+              disabled={this.submitDisabled}
+            />
           </div>
         </form>
       </div>

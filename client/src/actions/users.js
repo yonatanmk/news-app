@@ -10,7 +10,7 @@ export const fetchUser = () => dispatch => {
   return axios
     .get('/api/current-user')
     .then(res => dispatch({ type: SET_USER, payload: res.data }))
-    .catch(err => {
+    .catch(() => {
       alert('There was an error getting your user data.');
       dispatch({ type: SET_USER, payload: null });
     })
@@ -22,7 +22,7 @@ export const addUserStory = story => dispatch => {
     .post('/api/add-user-story', { story })
     .then(res => dispatch({ type: SET_USER, payload: res.data }))
     .then(() => notify.show('Story Saved To Your Profile', 'success', 2000))
-    .catch(err => {
+    .catch(() => {
       alert(`There was an error saving the news story "${story.title}".`);
     });
 };
@@ -32,7 +32,7 @@ export const removeUserStory = title => dispatch => {
     .post('/api/remove-user-story', { title })
     .then(res => dispatch({ type: SET_USER, payload: res.data }))
     .then(() => notify.show('Story Removed From Your Profile', 'error', 2000))
-    .catch(err => {
+    .catch(() => {
       alert(`There was an error removing your news story "${title}".`);
     });
 };
@@ -40,11 +40,11 @@ export const removeUserStory = title => dispatch => {
 export const setUserSources = sources => dispatch => {
   isFetching.start(dispatch);
   return axios
-    .post('/api/set-user-sources', {sources})
+    .post('/api/set-user-sources', { sources })
     .then(res => dispatch({ type: SET_USER, payload: res.data }))
     .then(() => axios.get('/api/source-list'))
     .then(res => dispatch({ type: SET_SOURCES, payload: res.data }))
-    .catch(err => {
+    .catch(() => {
       alert('There was an error saving your sources.');
     })
     .finally(() => isFetching.stop(dispatch));

@@ -11,7 +11,7 @@ module.exports = app => {
         res.send(newUser);
       })
       .catch(() => {
-        console.log('Error Getting Front End User: /api/current-user')
+        console.log('Error Getting Front End User: /api/current-user');
         res.status(500).send();
       });
     }

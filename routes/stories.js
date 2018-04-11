@@ -18,7 +18,7 @@ module.exports = app => {
     rp(url)
       .then(_body => res.send(_body))
       .catch(() => {
-        console.log('Error Getting News Stories: /api/stories')
+        console.log('Error Getting News Stories: /api/stories');
         res.status(500).send();
       });
 	});
@@ -53,8 +53,8 @@ module.exports = app => {
       .then(newUser => getFrontEndUser(newUser))
       .then(_user => res.send(_user))
       .catch(() => {
-        console.log('Error Saving News Story: /api/add-user-story')
-        console.log(story.title)
+        console.log('Error Saving News Story: /api/add-user-story');
+        console.log(story.title);
         res.status(500).send();
       });
 	});
@@ -73,8 +73,8 @@ module.exports = app => {
       .then(newUser => getFrontEndUser(newUser))
       .then(_user => res.send(_user))
       .catch(() => {
-        console.log('Error Removing News Story: /api/remove-user-story')
-        console.log(title)
+        console.log('Error Removing News Story: /api/remove-user-story');
+        console.log(title);
         res.status(500).send();
       });
   });

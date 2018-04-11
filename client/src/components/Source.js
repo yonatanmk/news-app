@@ -46,7 +46,7 @@ class Source extends Component {
 
   render() {
     if (this.props.user === false) {
-      return (<Redirect to='/'/>);
+      return (<Redirect to="/" />);
     }
     return (
       <div>

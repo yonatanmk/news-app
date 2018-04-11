@@ -17,4 +17,4 @@ export default {
       dispatch({ type: REMOVE_IS_FETCHING });
     }
   },
-}
+};

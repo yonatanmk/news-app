@@ -9,6 +9,11 @@ class Dashboard extends Component {
     window.scrollTo(0, 0);
   }
 
+  get displayPicker() {
+    const { user } = this.props;
+    return !user || !user.sources || user.sources.length !== 5;
+  }
+
   renderSources() {
     const { sources } = this.props;
     return sources.map(source => (
@@ -19,14 +24,9 @@ class Dashboard extends Component {
     ));
   }
 
-  get displayPicker() {
-    const { user } = this.props;
-    return !user || !user.sources || user.sources.length !== 5
-  }
-
   render() {
     if (this.props.user === false) {
-      return (<Redirect to='/'/>);
+      return (<Redirect to="/" />);
     }
     return (
       <div>

@@ -8,7 +8,7 @@ export const fetchStories = sourceId => dispatch => {
   return axios
     .post('/api/stories', { sourceId })
     .then(res => dispatch({ type: FETCH_STORIES, payload: res.data.articles }))
-    .catch(err => {
+    .catch(() => {
       alert('There was an error getting today\'s news stories.');
       dispatch({ type: FETCH_STORIES, payload: null });
     })

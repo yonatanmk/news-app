@@ -8,7 +8,7 @@ export const fetchSources = () => dispatch => {
   return axios
     .get('/api/source-list')
     .then(res => dispatch({ type: SET_SOURCES, payload: res.data }))
-    .catch(err => {
+    .catch(() => {
       alert('There was an error getting today\'s news sources.');
       dispatch({ type: SET_SOURCES, payload: null });
     })

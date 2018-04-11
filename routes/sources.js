@@ -8,7 +8,7 @@ const User = mongoose.model('users');
 
 module.exports = app => {
   app.get('/api/source-list', (req, res) => {
-    const userSources = _.get(req, 'user.sources')
+    const userSources = _.get(req, 'user.sources');
 
     const url = 'https://newsapi.org/v2/sources?' +
       `apiKey=${keys.apiKey}`;
@@ -19,16 +19,15 @@ module.exports = app => {
           .sources.filter(source => {
             if (userSources.length === 5) {
               return userSources && userSources.includes(source.id);
-            } else {
-              return true;
             }
+            return true;
           });
         res.send(sources);
       })
       .catch(() => {
-        console.log('Error Getting News Sources: /api/source-list')
+        console.log('Error Getting News Sources: /api/source-list');
         res.status(500).send();
-      })
+      });
 	});
 
   app.post('/api/set-user-sources', (req, res) => {
@@ -46,7 +45,7 @@ module.exports = app => {
       .then(newUser => getFrontEndUser(newUser))
       .then(_user => res.send(_user))
       .catch(() => {
-        console.log('Error Saving News Sources: /api/set-user-sources')
+        console.log('Error Saving News Sources: /api/set-user-sources');
         res.status(500).send();
       });
   });
