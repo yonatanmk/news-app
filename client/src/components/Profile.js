@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import * as actions from '../actions';
 import StoryBox from './StoryBox';
 
@@ -38,7 +39,7 @@ class Profile extends Component {
         <h1 className="page-title">Your Stories</h1>
         {this.renderStories()}
         <div className="column-box">
-          <a href="/home">Back</a>
+          <Link to="/home">Back</Link>
         </div>
       </div>
     );
