@@ -23,9 +23,7 @@ class Header extends Component {
         <Link to={this.props.user ? '/home' : '/'} className="nav-item logo">
           News App
         </Link>
-        <div className="nav-right">
-          {this.renderContent()}
-        </div>
+        {this.renderContent()}
       </div>
     );
   }
