@@ -24,7 +24,7 @@ class App extends Component {
   }
 
   render() {
-    const { isFetching } = this.props;
+    const { user, isFetching } = this.props;
     return (
       <div className="container">
         <Notifications />
@@ -46,7 +46,7 @@ class App extends Component {
             />
           </div>
         }
-        <div className="footer">
+        <div className="footer" style={!user ? {position: 'fixed'} : {}}>
           <a href="https://newsapi.org">Powered by News API</a>
         </div>
       </div>
